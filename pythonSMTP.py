@@ -45,7 +45,7 @@ print("recv2 : ", recv2)
 # response. [replace "xxxx" with a valid account]
 # It specifies the recipient of mail.
 # Fill in start
-rcptto = "RCPT TO: <kwonsun7@msu.edu\r\n"
+rcptto = "RCPT TO: <kwonsun7@egr.msu.edu>\r\n"
 clientSocket.send(rcptto.encode())
 recv3 = clientSocket.recv(1024).decode()
 print("recv3 : ",recv3)
@@ -54,32 +54,32 @@ print("recv3 : ",recv3)
 # Send DATA command and print server response.
 # It specifies the beginning of the mail.
 # Fill in start
-data = 'DATA \r\n'
+data = 'DATA \r\n' 
 clientSocket.send(data.encode())
-recv4 = clientSocket.recv(1024)
-print(recv4)
+recv4 = clientSocket.recv(1024).decode()
+print("recv4 : ",recv4)
 # Fill in end
 
 # Send message data.
 # Fill in start
 clientSocket.send(msg.encode())
-recv5 = clientSocket.recv(1024)
-print(recv5)
+#recv5 = clientSocket.recv(1024).decode()
+#print("recv5 : ", recv5)
 # Fill in end
 
 # Message ends with a single period.
 # Fill in start
 clientSocket.send(endmsg.encode())
-recv6 = clientSocket.recv(1024)
-print(recv6)
+recv6 = clientSocket.recv(1024).decode()
+print("recv6 : ",recv6)
 # Fill in end
 
 # Send QUIT command and get server response.
 # Fill in start
 quit = 'QUIT\r\n'
 clientSocket.send(quit.encode())
-recv7 = clientSocket.recv(1024)
-print(recv7)
+recv7 = clientSocket.recv(1024).decode()
+print("recv7 : ",recv7)
 # Fill in end
 
 clientSocket.close()
