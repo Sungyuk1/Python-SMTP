@@ -10,14 +10,15 @@ mailport = 25
 # Create socket called clientSocket and establish a TCP
 # connection with mailserver
 #Fill in start
-
+clientSocket = socket(AF_INET, SOCK_STREAM)
+clientSocket.connect((mailserver, mailport))
 #Fill in end
 
 recv = clientSocket.recv(1024).decode()
 print(recv)
 
-if recv[:3] != ’220’:
-    print(’220 reply not received from server.’)
+if recv[:3] != "220":
+    print("220 reply not received from server.")
 
 # Send HELO command and print server response.
 #Fill in start
